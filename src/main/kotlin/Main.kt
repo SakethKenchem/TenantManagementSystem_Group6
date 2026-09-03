@@ -40,8 +40,99 @@ fun main() {
      and unexpected behavior.
      */
 
+    // PART 3 - STRINGS
+
+    // Concatenation
+    println(name + " lives in house " + houseNumber)
+
+    // String template
+    println("$name lives in house $houseNumber")
+
+    /* PART 3.2: The string template version is easier to read because it keeps the text in a natural
+    tone without repetitive quotes or + operators.
+    */
+
+    // Expression template
+    println("Total rent for 6 months: KES ${monthlyRent * 6}")
+
+    // Triple quote multiline string
+    val receipt = """
+        ===== RENT RECEIPT =====
+        Tenant: $name
+        House: $houseNumber
+        Paid: KES $amountPaid
+     """.trimIndent()
+    println(receipt)
+    /*
+     - Without .trimIndent(), Kotlin preserves all the leading spaces from the code indentation,
+       shifting the lines far to the right in the terminal.
+     - .trimIndent() detects the smallest indent across non-empty lines, removes it
+        from all lines, and drops any initial blank lines.
+     */
+
+    val greeting = "Dear Tenant"
+    greeting.uppercase()
+    println(greeting)
+    /*
+     Task 3.5 Questions:
+     - greeting remains unchanged because String objects in Kotlin are immutable;
+     - By printing the return value directly: println(greeting.uppercase())
+     */
+
+    // PART 4 - OPERATORS
+
+    // Calculating balance
+    val balance: Int = monthlyRent - amountPaid
+    println("Balance: KES $balance")
+
+    // Percentage paid
+    val percentPaid = (amountPaid / monthlyRent) * 100
+    println("Paid: $percentPaid%")
     val registrationNumber: Long = 999_999_999L
     println("Registration number: $registrationNumber")
+
+    /*
+     PART 4.2
+     - I got 0%. No it is not correct, 20,000 out of 25,000 should be 80%
+     - Integer division truncates decimals: 20000 / 25000 evaluates to 0. Then 0 * 100 = 0.
+     - Method 1 (Double casting): val correctPercent1 = ((amountPaid.toDouble() / monthlyRent) * 100).toInt()
+       Method 2 (Multiply first to prevent early truncation): val correctPercent2 = (amountPaid * 100) / monthlyRent
+     */
+
+    val fixedPercentPaid = (amountPaid * 100) / monthlyRent
+    println("Paid: $fixedPercentPaid%")
+
+    // Instalments calculation
+    val instalmentAmount = 6000
+    val fullInstalments = monthlyRent / instalmentAmount
+    val remainingAmount = monthlyRent % instalmentAmount
+    println("Full instalments: $fullInstalments")
+    println("Remaining amount: KES $remainingAmount")
+
+    // Numeric operator method
+    val totalRent = monthlyRent.times(6)
+    println("Total rent using method syntax: $totalRent")
+
+    // Boolean comparison without if
+    val isRentPaid: Boolean = amountPaid >= monthlyRent
+    println("Is rent paid: $isRentPaid")
+
+    // Logical operators and reminder condition
+    var monthsInArrears = 2
+    val isRentOutstanding: Boolean = amountPaid < monthlyRent
+    val needsReminder: Boolean = isRentOutstanding && (monthsInArrears > 1)
+    println("Needs reminder (2 months in arrears): $needsReminder")
+
+    monthsInArrears = 1
+    val needsReminderAfterChange: Boolean = isRentOutstanding && (monthsInArrears > 1)
+    println("Needs reminder (1 month in arrears): $needsReminderAfterChange")
+    /*
+     PART 4.6:
+     - When monthsInArrears is changed to 1, needsReminder evaluates to false.
+     - The condition requires that (monthsInArrears > 1). When monthsInArrears is 1,
+       (1 > 1) is false. The logical AND (&&) operator requires both operands
+       to be true, therefore the entire expression evaluates to false.
+     */
     
 // Task 8.1 & 8.2: Declaring Nullable String
     // To make a variable nullable, append '?' to the data type.
@@ -69,5 +160,7 @@ fun main() {
     val nextOfKin: String? = null // Change to "John Doe" to test both cases
     val nokDisplay = nextOfKin?.uppercase() ?: "No next of kin on record"
     println("Next of Kin: $nokDisplay")
+
+
 
 }
