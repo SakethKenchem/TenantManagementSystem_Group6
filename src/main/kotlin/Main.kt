@@ -133,7 +133,77 @@ fun main() {
        (1 > 1) is false. The logical AND (&&) operator requires both operands
        to be true, therefore the entire expression evaluates to false.
      */
-    
+
+
+ //TASK 7
+
+    // Task 7.1
+    // Creating a list of tenants
+    val tenantsList = listOf("Jane Wanjiku", "Brian Otieno", "Mary Achieng", "John Kamau")
+
+    // First element is index 0, last element is at size - 1
+    println("First tenant: ${tenantsList[0]}")
+    println("Last tenant: ${tenantsList[tenantsList.size - 1]}")
+
+
+    // Task 7.2
+    // trying tenantsList.add("David Mwangi") gives a compilation error: "Unresolved reference: add"
+    // It happens because listOf() creates an immutable list, so you can't add or remove items and to fix this, we can use mutableListOf()
+
+
+    val mutableTenants = mutableListOf("Jane Wanjiku", "Brian Otieno", "Mary Achieng", "John Kamau")
+
+    mutableTenants.add("David Mwangi")
+    mutableTenants.remove("Brian Otieno")
+
+    println("Final tenant list: $mutableTenants")
+    println("Final list size: ${mutableTenants.size}")
+
+
+    // Task 7.3
+    val houseNumbers = arrayOf("A-101", "A-102", "A-103", "A-104")
+
+    // Printing 2nd house
+    println("Second house: ${houseNumbers[1]}")
+
+    // Updating element at index 0 to A-201
+    houseNumbers[0] = "A-201"
+
+    // Printing elements with a space seperator
+    println(houseNumbers.joinToString(" "))
+
+
+    // Task 7.4
+    // Prediction: Printing an array variable directly gives a memory reference eg [Ljava.lang.String;@1b6d3586
+    // Reason is because arrays in Kotlin don't override toString() and so it prints that
+    // To fix it we can use: .joinToString() and .contentToString
+
+
+    val houseNumberz = arrayOf("A-101", "A-102")
+    println(houseNumberz)
+
+
+
+    // Task 7.5
+    // Prediction:output will be "1, 2, 3, 4, 5, 6"
+    val blockA = intArrayOf(1, 2, 3)
+    val blockB = intArrayOf(4, 5, 6)
+
+    val combined = blockA + blockB
+    println("Combined: ${combined.joinToString()}")
+
+    // Swapping to blockB + blockA
+    val swappedCombined = blockB + blockA
+    println("Combined: ${swappedCombined.joinToString()}")
+    // Rule: The + operator joins the arrays in the exact order that they are.
+
+
+    // Task 7.6
+
+    // 1- MutableList and Array: A MutableList can change its size dynamically while an array's size is fixed once created
+    // 2- Array and Read-only List: An Array lets you change its existing elements while a read-only List won't let you modify anything
+
+
 // Task 8.1 & 8.2: Declaring Nullable String
     // To make a variable nullable, append '?' to the data type.
     var tenantEmail: String? = null
