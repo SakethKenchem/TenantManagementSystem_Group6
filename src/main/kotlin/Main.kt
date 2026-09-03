@@ -42,6 +42,32 @@ fun main() {
 
     val registrationNumber: Long = 999_999_999L
     println("Registration number: $registrationNumber")
+    
+// Task 8.1 & 8.2: Declaring Nullable String
+    // To make a variable nullable, append '?' to the data type.
+    var tenantEmail: String? = null
+    println("Task 8.2 Direct Print: Email is $tenantEmail")
 
+    // Task 8.3
+    var emailDisplay = tenantEmail ?: "Not provided"
+    println("Email: $emailDisplay")
+
+    // Reassigning to confirm the fallback is overridden when data exists
+    tenantEmail = "jane@example.com"
+    emailDisplay = tenantEmail ?: "Not provided"
+    println("Email: $emailDisplay")
+
+    // Task 8.4: Testing Null Safety Operators
+    tenantEmail = null
+    println(tenantEmail?.length)           // Output: null (Safe call)
+    println(tenantEmail?.length ?: 0)      // Output: 0 (Elvis Operator fallback)
+    
+    // Un-commenting the line below triggers a NullPointerException (NPE) crash:
+    // println(tenantEmail!!.length)
+
+    // Task 8.5
+    val nextOfKin: String? = null // Change to "John Doe" to test both cases
+    val nokDisplay = nextOfKin?.uppercase() ?: "No next of kin on record"
+    println("Next of Kin: $nokDisplay")
 
 }
