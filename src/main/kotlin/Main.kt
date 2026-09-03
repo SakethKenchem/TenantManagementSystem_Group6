@@ -134,6 +134,104 @@ fun main() {
        to be true, therefore the entire expression evaluates to false.
      */
 
+    // PART 5 - Making Decisions
+
+    // Task 5.1: if / else decision
+    var currentBalance = monthlyRent - amountPaid
+    if (currentBalance <= 0) {
+        println("Rent is fully paid\n")
+    } else {
+        println("Rent is outstanding\n")
+    }
+
+    // Task 5.2: Extended if / else if / else chain
+    if (currentBalance <= 0) {
+        println("Rent is fully paid\n")
+    } else if (currentBalance < 10000) {
+        println("Small outstanding balance\n")
+    } else {
+        println("Large outstanding balance\n")
+    }
+
+    // Task 5.3: Task 5.2 rewritten as a when statement
+    when {
+        currentBalance <= 0 -> println("Rent is fully paid\n")
+        currentBalance < 10000 -> println("Small outstanding balance\n")
+        else -> println("Large outstanding balance\n")
+    }
+
+    // Task 5.3 Answer
+    // the code for a when statement is more readable and better looking to the eye compared to the if / else if
+    // as it removes repeating condition words from the code structure
+    // making the code a structured tabular code
+
+    // Task 5.4 : Arears Classification using when statements & ranges
+    // tested with to 0, 2, 4, 8, & 15
+    when (monthsInArrears) {
+        0 -> println("Rent is up to date\n")
+        in 1..2 -> println("Early arrears\n")
+        in 3..5 -> println("Serious arrears\n")
+        in 6..12 -> println("Critical arrears\n")
+        else -> println("Review tenant account\n")
+    }
+
+    // Task 5.5: Account status check using different conditions
+    val status = "ACTIVE" // Tested with "ACTIVE", "VACATED", or "PENDING"
+    when (status) {
+        "ACTIVE" -> println("Tenant is currently active.\n")
+        "VACATED" -> println("Tenant has vacated the property.\n")
+        "PENDING" -> println("Tenant account is pending approval.\n")
+        else -> println("Unknown status of Tenant.\n")
+    }
+
+    // PART 6 - Ranges and Loops
+
+    // Task 6.1: Print months 1 to 12
+    for (month in 1..12) {
+        println("Month $month\n")
+    }
+
+    // Task 6.2: Every second month using step 2
+    for (month in 1..12 step 2) {
+        println("Checking payment history for month $month\n")
+    }
+
+    // Task 6.3: Lease countdown using downTo
+    for (month in 5 downTo 1) {
+        println("Month $month\n")
+    }
+
+    // Task 6.4: Numbered tenant list with withIndex()
+    val part6Tenants = listOf("Jane", "Brian", "Mary", "David")
+    for ((index, tenant) in part6Tenants.withIndex()) {
+        println("${index + 1}. $tenant\n")
+    }
+
+    //Part 6.4 Answer
+    //Kotlin indexes start at 0 (zero-based)
+    //so adding the 1 converts the zero based computer index to a counting system
+
+    // Task 6.5: while vs do-while comparison
+    var vacantHouses = 0
+
+    // Version A
+    while (vacantHouses > 0) {
+        println("Checking vacant houses...\n")
+    }
+
+    // Version B
+    do {
+        println("Checking vacant houses...\n")
+    } while (vacantHouses > 0)
+
+    //Part 6.5 Answer
+    //the version A wont print anything as it evaluates the condition before executing the block of code
+    //whereas version B does the 'do' then evaluates the condition so it will print the line once
+
+    // Task 6.6: Repeat simple action
+    repeat(3) {
+        println("Please pay your rent.\n")
+    }
 
  //TASK 7
 
