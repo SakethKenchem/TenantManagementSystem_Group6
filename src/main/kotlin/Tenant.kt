@@ -1,8 +1,22 @@
 class Tenant(
     var name: String,
     var apartmentNumber: Int,
-    var rentAmount: Double
+    rentAmount: Double
 ) {
+
+    // Custom getter and setter for rentAmount
+    var rentAmount: Double = rentAmount
+        get() {
+            println("Rent amount accessed.")
+            return field
+        }
+        set(value) {
+            if (value >= 0) {
+                field = value
+            } else {
+                println("Rent amount cannot be negative.")
+            }
+        }
 
     var isPaid: Boolean = false
 
