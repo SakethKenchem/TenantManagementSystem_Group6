@@ -6,7 +6,7 @@ class Apartment(
 
     // A mutable list to store all the Tenant objects living here
     // Setting it to mutableListOf() by default allows creating an apartment with 0 tenants from start
-    val tenants: MutableList = mutableListOf()
+    val tenants: MutableList<Tenant> = mutableListOf()
 ) {
 
     // Adding Tenant Function

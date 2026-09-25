@@ -83,13 +83,13 @@ fun main() {
     println("Testing custom getter:")
     println(tenant3.rentAmount)
 
-    println("Apartment: $apartmentNumber")
+    println("Apartment: ${apartment.apartmentNumber}")
 
     // Loop through each tenant stored in the tenants list and print their details
-    for (tenant in tenants) {
+    for (tenant in apartment.tenants) {
         println("Tenant: ${tenant.name}")
         println("Rent: ${tenant.rentAmount}")
         println("Rent paid: ${tenant.isPaid}")
     }
-
 }
+
