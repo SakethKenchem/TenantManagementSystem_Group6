@@ -53,6 +53,36 @@ fun main() {
           It receives an incoming value, validates it, and updates the backing field (field).
     */
 
+
+    //uncomment this within the apartment class while doing task 5
+   /* fun addTenant(tenant: Tenant) {
+        tenants.add(tenant)
+    }*/
+
+
+   //Task 6: Adding Tenants to an Apartment
+
+    //Creating an Apartment object
+    val apartment = Apartment(apartmentNumber = 1)
+
+//Creating two Tenant objects
+    val tenant4 = Tenant("Marcus", 104, 16000.0)
+    val tenant5 = Tenant("Alicia", 105, 17000.0)
+
+//Adding both tenants to the apartment
+    apartment.addTenant(tenant4)
+    apartment.addTenant(tenant5)
+
+//Verifying that both tenants are stored in the apartment
+    println("Number of tenants in apartment ${apartment.apartmentNumber}: ${apartment.tenants.size}")
+    for (tenant in apartment.tenants) {
+        println("Tenant: ${tenant.name}")
+    }
+
+    // the Apartment doesn't inherit from Tenant,it simply stores references to tenant objects
+
+
+
     // Custom getter
     // Task 7-Loops through the apartment's tenant list to print each tenant's name, rent, and payment status
     println("Testing custom getter:")
