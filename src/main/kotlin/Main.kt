@@ -66,7 +66,7 @@ fun main() {
     val apartment = Apartment(apartmentNumber = 1)
 
 //Creating two Tenant objects
-    val tenant4 = Tenant("Marcus", 104, 16000.0)
+    val tenant4 = Tenant("Markus", 104, 16000.0)
     val tenant5 = Tenant("Alicia", 105, 17000.0)
 
 //Adding both tenants to the apartment
